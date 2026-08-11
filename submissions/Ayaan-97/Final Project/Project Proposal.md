@@ -1,132 +1,125 @@
 # Final Project Proposal
-> This is an final project proposal showing what a complete proposal looks like.
+
+> This is the final project proposal for the Machine Learning project.
 
 **Date:** July 2026
 
 ---
-## 1. Certificate Name
+
+# 1. Student Name
 
 **Ayan Adan Mohamed**
 
 ---
 
-## 2. Project Title and Description
-**Project Title**
+# 2. Project Title and Description
 
-Breast Cancer Detection Predection
+## Project Title
 
-*Description*
+**Breast Cancer Detection Using Machine Learning**
 
-Breast cancer is one of the leading causes of cancer-related deaths among women worldwide. Early detection can significantly improve treatment outcomes and survival rates. This project aims to develop a machine learning model that classifies breast tumors as benign or malignant using clinical measurements from the Breast Cancer Wisconsin dataset. In addition to prediction, the project will use clustering techniques to explore hidden patterns among tumor characteristics. The results can support healthcare professionals by providing faster and more accurate diagnostic assistance.
+### Description
 
----
+Breast cancer is one of the leading causes of cancer-related deaths among women worldwide. Early detection plays a vital role in improving treatment outcomes and increasing survival rates. This project aims to develop a machine learning model that classifies breast tumors as **benign** or **malignant** using clinical measurements from the Breast Cancer Wisconsin Diagnostic Dataset.
 
-## 3. Problem Type
-
-**Primary Problem Type:** *Classification*
-
-**Additional Analysis:** *Clustering (Unsupervised Learning)*
-
-The main objective is to classify breast tumors into benign or malignant categories using supervised machine learning. As part of the exploratory analysis, K-Means clustering will be applied to discover natural groupings among tumor samples and compare them with the known diagnosis labels.
+The project will compare the performance of multiple supervised machine learning algorithms, including **Random Forest**, **Support Vector Machine (SVM)**, and **XGBoost**. The best-performing model will be deployed as a web-based application that enables healthcare professionals to enter tumor measurements and receive an instant prediction to support clinical decision-making.
 
 ---
 
-## 4. Dataset
+# 3. Problem Type
 
-*Dataset Source*
+## Primary Problem Type
 
-Breast Cancer yasserh Diagnostic Dataset (Kaggle)
+**Supervised Machine Learning – Binary Classification**
 
-https://www.kaggle.com/code/jnegrini/breast-cancer-dataset
+The objective of this project is to develop a binary classification model that predicts whether a breast tumor is:
 
-*Dataset Size*
+* **Benign (B)** – Non-cancerous
+* **Malignant (M)** – Cancerous
 
-Approximately 40000 + records in the original dataset.
+using labeled clinical measurements from the dataset.
 
-Note: Since the course proposal requires at least 1,000 rows and 16 columns, I will use an expanded version of the dataset and available breast cancer datasets containing more than 4,000 samples for training and evaluation.
+---
 
-*Target Column*
+# 4. Dataset
+
+## Dataset Source
+
+**Breast Cancer Wisconsin Diagnostic Dataset (Kaggle)**
+
+https://www.kaggle.com/datasets/yasserh/breast-cancer-dataset
+
+
+## Dataset Size
+
+Approximately **569+** records.
+
+Since the course requires a dataset containing at least **1,000 rows** and **32 columns**, an expanded version of the Breast Cancer Wisconsin dataset containing more than **569+ samples** will be used for training and evaluation.
+
+## Target Column
 
 **Diagnosis**
 
-M = Malignant
-B = Benign
+* **M** = Malignant
+* **B** = Benign
 
-**Main Features**
+## Main Features
 
-Radius Mean
-Texture Mean
-Perimeter Mean
-Area Mean
-Smoothness Mean
-Compactness Mean
-Concavity Mean
-Symmetry Mean
-Fractal Dimension Mean
-
----
-
-## 5. Algorithms You Plan to Train
-
-
-**Supervised Learning And Unsupervised Learning**
-
-| # | Algorithm | Why it fits |
-| --- | --- | --- |
-
-
-|1|**Random Forest**
-
-|Random Forest handles complex relationships between tumor features and provides high classification accuracy.|
-
-|2| **Support Vector Machine (SVM)**
-
-| SVM performs well on medical datasets with high-dimensional features and is commonly used for breast cancer classification.|
-
-|3| **XGBoost**
-
-| XGBoost is an advanced boosting algorithm that often achieves excellent predictive performance on structured medical data.|
-
-|4| **K-Means Clustering**
-
-| K-Means will group tumors with similar characteristics to explore whether natural clusters correspond to benign and malignant diagnoses.|
+* Radius Mean
+* Texture Mean
+* Perimeter Mean
+* Area Mean
+* Smoothness Mean
+* Compactness Mean
+* Concavity Mean
+* Concave Points Mean
+* Symmetry Mean
+* Fractal Dimension Mean
 
 ---
 
-## 6. Evaluation Plan
+# 5. Algorithms to be Trained
 
-**Classification Metrics**
-
-Accuracy
-Precision
-Recall
-F1-Score
-ROC-AUC
-Confusion Matrix
-
-**Clustering Metric**
-Silhouette Score
-
-**Best Model Selection**
-
-The F1-Score will be used to select the best classification model because it balances both precision and recall, which is important in medical diagnosis where false negatives and false positives have significant consequences.
+| Algorithm                        | Why it Fits                                                                                                            |
+| -------------------------------- | ---------------------------------------------------------------------------------------------------------------------- |
+| **Random Forest**                | Handles complex relationships between tumor features and provides high classification accuracy.                        |
+| **Support Vector Machine (SVM)** | Performs well on high-dimensional medical datasets and is widely used for breast cancer classification.                |
+| **XGBoost**                      | An advanced gradient boosting algorithm that delivers excellent predictive performance on structured medical datasets. |
 
 ---
 
-## 7. Deployment Sketch
+# 6. Evaluation Plan
 
-**Framework**
+## Classification Metrics
 
-FastAPI
+* Accuracy
+* Precision
+* Recall
+* F1-Score
+* ROC-AUC Score
+* Confusion Matrix
 
-**Endpoint**
+## Best Model Selection
 
+The **Accuracy** will be used as the primary evaluation metric because it provides a balanced measure of both **Precision** and **Recall**. This is particularly important in breast cancer diagnosis, where reducing false negatives and false positives is critical for reliable clinical decision-making.
+
+---
+
+# 7. Deployment Plan
+
+## Framework
+
+**FastAPI**
+
+## API Endpoint
+
+```http
 POST /predict
+```
 
-**Input (JSON)**
+## Input (JSON)
 
 ```json
-
 {
   "radius_mean": 17.99,
   "texture_mean": 10.38,
@@ -134,42 +127,44 @@ POST /predict
   "area_mean": 1001.0,
   "smoothness_mean": 0.1184
 }
-
 ```
-**Output JSON:**
+
+## Output (JSON)
 
 ```json
-
-Output
 {
   "prediction": "Malignant",
-  "probability": 0.97,
-  "cluster": 1
+  "probability": 0.97
 }
-
 ```
 
-The API will return both the predicted diagnosis and the patient's cluster assignment.
+The API will return the predicted diagnosis together with the prediction confidence score.
 
 ---
 
-## 8. Repository Plan
+# 8. Repository Plan
 
-```
-Breast-Cancer-Detection/
+```text
+Breast_Cancer_Project/
 │
 ├── dataset/
-├── notebooks/
-│   ├── eda.ipynb
-│   ├── clustering.ipynb
-│   └── modeling.ipynb
-├── src/
-│   ├── preprocess.py
-│   ├── train.py
-│   └── predict.py
-├── api/
-│   └── app.py
+│   └── data.csv
+|   |___cleaned_data.csv
+│
 ├── models/
-├── reports/
+│   ├── breast_model.pkl
+│   └── scaler.pkl
+│
+├── train_model.py
+├── processing.py
+├── app.py
+├── requirements.txt
 ├── README.md
 └── project-proposal.md
+```
+
+---
+
+# 9. Expected Outcome
+
+The expected outcome of this project is a reliable machine learning model capable of accurately classifying breast tumors as benign or malignant. By comparing the performance of Random Forest, Support Vector Machine (SVM), and XGBoost, the project will identify the most effective algorithm for breast cancer prediction. The selected model will be deployed through a FastAPI-based web application, providing healthcare professionals with a fast and accurate decision-support tool for breast cancer diagnosis.
